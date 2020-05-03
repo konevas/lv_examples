@@ -95,9 +95,10 @@ static void mem_monitor(lv_task_t * param)
 #if LV_EX_PRINTF
     lv_mem_monitor_t mon;
     lv_mem_monitor(&mon);
-    printf("used: %6d (%3d %%), frag: %3d %%, biggest free: %6d\n", (int)mon.total_size - mon.free_size,
-           mon.used_pct,
-           mon.frag_pct,
+    printf("used: %6d (%3d %%), frag: %3d %%, biggest free: %6d\n",
+           (int)(mon.total_size - mon.free_size),
+           (int)mon.used_pct,
+           (int)mon.frag_pct,
            (int)mon.free_biggest_size);
 #endif
 }
@@ -105,7 +106,7 @@ static void mem_monitor(lv_task_t * param)
 static void obj_mem_leak_tester(lv_task_t * param)
 {
     (void) param;    /*Unused*/
-    static const lv_color_t needle_colors[1] = {LV_COLOR_RED};  /*For gauge*/
+    const lv_color_t needle_colors[1] = {LV_COLOR_RED};  /*For gauge*/
 
     lv_coord_t hres = lv_disp_get_hor_res(NULL);
     lv_coord_t vres = lv_disp_get_ver_res(NULL);
